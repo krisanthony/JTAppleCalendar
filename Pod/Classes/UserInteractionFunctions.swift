@@ -242,7 +242,7 @@ extension JTAppleCalendarView {
     /// - Paramater date: The calendar view will scroll to a date-cell containing this date if it exists
     /// - Paramater animateScroll: Bool indicating if animation should be enabled
     /// - Parameter completionHandler: A completion handler that will be executed at the end of the scroll animation
-    public func scrollToDate(date: NSDate, triggerScrollToDateDelegate: Bool = true, animateScroll: Bool = true, completionHandler:(()->Void)? = nil) {
+    public func scrollToDate(date: NSDate, triggerScrollToDateDelegate: Bool = true, animateScroll: Bool = true, position: UICollectionViewScrollPosition = .CenteredHorizontally, completionHandler:(()->Void)? = nil) {
         guard let validCachedCalendar = calendar else {
             return
         }
@@ -266,7 +266,7 @@ extension JTAppleCalendarView {
                 let sectionIndexPath =  self.pathsFromDates([date])[0]
                 self.delayedExecutionClosure = completionHandler
                 
-                let position: UICollectionViewScrollPosition = self.direction == .Horizontal ? .Left : .Top
+                // let position: UICollectionViewScrollPosition = self.direction == .Horizontal ? .Left : .Top
                 if self.pagingEnabled {
                     if headerViewXibs.count > 0 {
                         // If both paging and header is on, then scroll to the actual date
